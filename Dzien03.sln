@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klasy", "Klasy\Klasy.csproj", "{EFC90560-8A3F-4F5F-AE97-6242C9D7ABE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dziedziczenie", "Dziedziczenie\Dziedziczenie.csproj", "{3BD3AFFF-52DE-47AC-974D-CEF899B7F798}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFC90560-8A3F-4F5F-AE97-6242C9D7ABE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC90560-8A3F-4F5F-AE97-6242C9D7ABE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC90560-8A3F-4F5F-AE97-6242C9D7ABE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC90560-8A3F-4F5F-AE97-6242C9D7ABE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD3AFFF-52DE-47AC-974D-CEF899B7F798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD3AFFF-52DE-47AC-974D-CEF899B7F798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD3AFFF-52DE-47AC-974D-CEF899B7F798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD3AFFF-52DE-47AC-974D-CEF899B7F798}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDAE15B0-A857-4958-B21F-E4D3D323A740}
+	EndGlobalSection
+EndGlobal
