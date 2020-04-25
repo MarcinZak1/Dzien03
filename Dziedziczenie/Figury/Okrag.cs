@@ -13,7 +13,7 @@ namespace Dziedziczenie.Figury
         
         public double ObliczPole()
         {
-            return 3.14159* promien*promiec;
+            return 3.14159* promien*promien;
         }
     }
 }
