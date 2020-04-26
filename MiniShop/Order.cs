@@ -31,13 +31,56 @@ namespace MiniShop
 
 
         //metody
+
+            private int GetProductIndex(Product product)
+        {
+            int result = -1;
+            for (int i = 0; i < items.Count; i++)
+            {
+               if(items[i].ProductName.Equals(product.ToString()))
+                {
+                    return i;
+                }
+            }
+            return result;
+        }
         public bool AddProduct(Product product, int qnty)
         {
             // akcja dodania produkctu do listy produktow z if czy mozna dodac (status order)
             //products.Add(product);
             if (status == OrderStatus.NewOrder && qnty > 0 && product != null)
             {
-                items.Add(new OrderItem(product, qnty));
+                int productIndex = items.FindIndex(x => x.ProductName.Equals(product.ToString()));
+                //int productIndex = GetProductIndex(product); jeśli mamy metode Lambda nie musimy tworzyc metody GetProductIndex
+                if (productIndex == -1)
+                {
+                    items.Add(new OrderItem(product, qnty));
+                }
+                else
+                {
+                    items[productIndex].Qnty += qnty;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool RemoveProduct(Product product, int qnty=0)
+        {
+            if (status == OrderStatus.NewOrder && qnty >= 0 && product != null)
+            {
+                int productIndex = items.FindIndex(x => x.ProductName.Equals(product.ToString()));
+                //int productIndex = GetProductIndex(product);
+                if (productIndex == -1) return false;
+                if (qnty > items[productIndex].Qnty) return false;
+                if(qnty==0 || qnty==items[productIndex].Qnty)
+                {
+                    items.RemoveAt(productIndex);
+                    return true;
+                }
+                items[productIndex].Qnty -= qnty;
                 return true;
             }
             else
@@ -61,10 +104,11 @@ namespace MiniShop
         private double CalcTotalAmount()
         {
             double amount = 0.0;
-            foreach (OrderItem item in items)
-            {
-                amount += item.ProductPrice * item.Qnty;
-            }
+            items.ForEach(e => amount += e.ProductPrice * e.Qnty);
+            //foreach (OrderItem item in items)
+            //{
+            //    amount += item.ProductPrice * item.Qnty;
+            //}
             if(discount>0 && discount<=100)
             {
                 amount *= (100 - discount) / 100.0;
@@ -74,10 +118,13 @@ namespace MiniShop
         public void Print()
         {
             Console.WriteLine("Elementy zamówienia: ");
-            foreach (var item in items)
+            items.ForEach(e => Console.WriteLine("{0,-40}|{1,10}|{2,10:0.00}|{3,12:0.00}|",
+                    e.ProductName, e.Qnty, e.ProductPrice, e.ProductPrice * e.Qnty));
+            /*foreach (var item in items)
             {
-                Console.WriteLine("{0}\t{1}\t{2}\t{3}", "", item.Qnty, item.ProductPrice, item.ProductPrice*item.Qnty);
-            }
+                Console.WriteLine("{0,-40}|{1,10}|{2,10:0.00}|{3,12:0.00}|",
+                    item.ProductName, item.Qnty, item.ProductPrice, item.ProductPrice*item.Qnty);
+            }*/
             Console.WriteLine("Do zapłaty: {0}", CalcTotalAmount());
         }
 
